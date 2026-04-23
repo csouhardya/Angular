@@ -2,9 +2,17 @@
   <a class="navbar-brand" href="#">LearnRestApi</a>
 </nav>
 <div class="login-container">
-  <div class="login-box">
-    <input type="text" placeholder="Login" />
-    <input type="password" placeholder="Password" />
-    <button>Login</button>
-  </div>
+    <div class="login-wrapper">
+        <div class="login-box">
+          <div class="login">
+              <input type="text" placeholder="Login" [formControl]="username"/>
+              <input type="password" placeholder="Password" [formControl]="password" /><br>
+              <button class="btn-login" (click)="Login()">Login</button>
+          </div>
+          <div class="links">
+            <a class="register" [routerLink]="['/register']" routerLinkActive="router-link-active"><span>Register user</span></a>
+            <a class="forgotPassword" [routerLink]="['/forgotpassword']" routerLinkActive="router-link-active"><span>Forgot password?</span></a>
+          </div>
+        </div> 
+    </div>
 </div>
