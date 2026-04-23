@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+.footer {
+  background-color: #000;
+  border-top: 1px solid rgb(163, 230, 53);
+  padding: 1.5rem 0;
+  font-family: 'Space Mono', monospace;
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Columns */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Contact items (icon + text) */
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: rgb(163, 230, 53);
+  transition: 0.2s ease;
+}
+
+.footer-item:hover {
+  text-shadow: 0 0 6px rgb(163, 230, 53);
+}
+
+/* Policy links stacked */
+.footer-link {
+  text-decoration: none;
+  color: rgb(163, 230, 53);
+  transition: 0.2s ease;
+}
+
+.footer-link:hover {
+  text-shadow: 0 0 6px rgb(163, 230, 53);
+}
+
+/* Icon styling */
+.icon {
+  font-size: 1.1rem;
+}
