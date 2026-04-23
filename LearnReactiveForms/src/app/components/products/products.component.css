@@ -1,0 +1,77 @@
+.products {
+  padding: 1rem;
+  font-family: 'Space Mono', monospace;
+  color: rgb(163, 230, 53);
+}
+
+/* Category */
+.category {
+  margin-bottom: 2rem;
+}
+
+/* Header */
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+/* View all */
+.view-all {
+  cursor: pointer;
+}
+
+.view-all:hover {
+  text-shadow: 0 0 6px rgb(163, 230, 53);
+}
+
+/* Row */
+.product-row {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Card */
+.card {
+  width: 180px;
+  border: 1px solid rgb(163, 230, 53);
+  display: flex;
+  flex-direction: column;
+  transition: 0.2s ease;
+}
+
+/* Image (3/5) */
+.img {
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid rgb(163, 230, 53);
+}
+
+/* Info (2/5) */
+.info {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* Hover pop */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px rgb(163, 230, 53);
+}
+
+/* Image container */
+.img {
+  height: 60%;
+  border-bottom: 1px solid rgb(163, 230, 53);
+}
+
+/* Actual image */
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
