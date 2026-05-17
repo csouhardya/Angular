@@ -1,0 +1,107 @@
+<div class="wrapper">
+    <h1>Reactive Forms</h1>
+    <div class="reactive">
+        <div class="form">
+            <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                <label>Name</label><br>
+                <input id="name" type="text" formControlName="name"><br>
+                @if(userForm.get('name')?.invalid && (userForm.get('name')?.touched || userForm.get('name')?.dirty)) {
+
+                    @if(userForm.get('name')?.hasError('required')) {
+                        <span class="validation-error">Name is required</span>
+                    }
+
+                    @if(userForm.get('name')?.hasError('minlength')) {
+                        <span class="validation-error">Name must be 5 characters</span>
+                    }
+
+                    @if(userForm.get('name')?.hasError('forbiddenName')) {
+                        <span class="validation-error">This name is not allowed</span>
+                    }
+                }
+
+                <label>Password</label><br>
+                <input type="password" formControlName="password"><br>
+                @if(userForm.get('password')?.invalid && (userForm.get('password')?.dirty || userForm.get('password')?.touched)) {
+
+                    @if(userForm.get('password')?.hasError('required')) {
+                        <span class="validation-error">Password is required</span>
+                    }
+
+                    @if(userForm.get('password')?.hasError('minlength')) {
+                        <span class="validation-error">Password length should be atleast 8</span>
+                    }
+
+                    @if(userForm.get('password')?.hasError('maxlength')) {
+                        <span class="validation-error">Password length should not be more than 20</span>
+                    }
+
+                    @if(userForm.get('password')?.hasError('passwordDoesnotMatchRequirement')) {
+                        <span class="validation-error">Password must contain 1 uppercase, 1 lowercase, 1 special character</span>
+                    }
+                }
+
+                <label>Email</label><br>
+                <input type="text" formControlName="email"><br>
+                
+                @if(userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)) {
+
+                    @if(userForm.get('email')?.hasError('required')) {
+                        <span class="validation-error">Email is required</span>
+                    }
+
+                    @if(userForm.get('email')?.hasError('email')) {
+                        <span class="validation-error">Email is not in correct format</span>
+                    }
+
+                }
+
+                <label>Phone Number</label><br>
+                <input type="number" formControlName="phoneNumber"><br>
+
+                @if(userForm.get('phoneNumber')?.invalid && (userForm.get('phoneNumber')?.dirty || userForm.get('phoneNumber')?.touched)) {
+
+                    @if(userForm.get('phoneNumber')?.hasError('required')) {
+                        <span class="validation-error">Phojne Number is required</span>
+                    }
+
+                    @if(userForm.get('phoneNumber')?.hasError('phoneNumberDoesNotStartWith9')) {
+                        <span class="validation-error">Phone Number should start with 9</span>
+                    }
+
+                }
+
+                <!-- TODO: validations -->
+                <div class="address-inputs" formGroupName="address">
+                    <label>City</label><br>
+                    <input type="text" formControlName="city"><br>
+
+                    <label>State</label><br>
+                    <input type="text" formControlName="state"><br>
+                    
+                    <label>Zip</label><br>
+                    <input type="text" formControlName="zip"><br>      
+                </div>
+
+                <label>Date of Birth</label><br>
+                <input type="date" formControlName="dateOfBirth"><br>
+
+                <label>Role</label><br>
+                <select formControlName="role">
+                    @for(role of roles; track $index) {
+                        <option [value]="role.id">{{role.value}}</option>
+                    }
+                </select>
+                <br><br>
+
+                <button type="submit" [disabled]="!userForm.valid">Submit</button>
+                <button type="button" (click)="populateFormGroup()">Populate</button>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="links">
+        <a href="/template" class="go-to-reactive">Go to Template form</a>
+    </div>
+</div>
