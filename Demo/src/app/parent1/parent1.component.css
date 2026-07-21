@@ -1,0 +1,19 @@
+.page-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-section {
+    flex: 3;
+}
+
+.bottom-section {
+    flex: 7;
+    display: flex;
+}
+
+.child-left,
+.child-right {
+    flex: 1;
+}

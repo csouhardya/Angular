@@ -1,0 +1,139 @@
+<div class="wrapper">
+    <h1>Reactive Forms</h1>
+
+    <div class="template">
+        <div class="form">
+            <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+                <label for="name">Name</label><br>
+                <input type="text" name="name" formControlName="name"/><br>
+                @if(employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched){
+
+                    @if(employeeForm.get('name')?.hasError('required')){
+                        <span class="validation-error">Name is required</span><br>
+                    }
+
+                    @if(employeeForm.get('name')?.hasError('forbiddenName')){
+                        <span class="validation-error">Name cannot contain admin</span><br>
+                    }
+                }
+
+                <label for="password">Password</label><br>
+                <input type="password" name="password" formControlName="password" /><br>
+                @if(employeeForm.get('password')?.invalid && employeeForm.get('password')?.touched) {
+
+                    @if(employeeForm.get('password')?.hasError('required')){
+                        <span class="validation-error">Password is required</span><br>
+                    }
+
+                    @if(employeeForm.get('password')?.hasError('minlength')){
+                        <span class="validation-error">Password must be more than 8 characters</span><br>
+                    }
+
+                    @if(employeeForm.get('password')?.hasError('SpecialCharRequired')){
+                        <span class="validation-error">Password must contain one special character</span><br>
+                    }
+                }
+
+                <label for="phoneNumber">Phone Number</label><br>
+                <input type="number" name="phoneNumber" formControlName="phoneNumber" /><br>
+                @if(employeeForm.get('phoneNumber')?.invalid && employeeForm.get('phoneNumber')?.touched){
+
+                    @if(employeeForm.get('phoneNumber')?.hasError('required')){
+                        <span class="validation-error">Phone number is required</span><br>
+                    }
+
+                    @if(employeeForm.get('phoneNumber')?.hasError('minlength')){
+                        <span class="validation-result">Phone number must be 10 digits</span><br>
+                    }
+                }
+
+                <label for="email">Email</label><br>
+                <input type="text" name="email" formControlName="email" /><br>
+                @if(employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched){
+                    
+                    @if(employeeForm.get('email')?.hasError('required')){
+                        <span class="validation-result">Email address is required</span><br>
+                    }
+
+                    @if(employeeForm.get('email')?.hasError('EmailIsInvalid')){
+                        <span class="validation-error">Email is not in correct format</span><br>
+                    }
+                }
+
+
+                <label for="phoneNumber">Address</label><br>
+                <div formGroupName="address" >
+                    <label for="city">City</label><br>
+                    <input type="text" name="city" formControlName="city" /><br>
+                    @if(employeeForm.get('address')?.get('city')?.invalid && employeeForm.get('address')?.get('city')?.touched){
+
+                        @if(employeeForm.get('address')?.get('city')?.hasError('required')) {
+                            <span class="validation-error">City is required</span><br>
+                        }
+                    }
+                    <label for="state">State</label><br>
+                    <input type="text" name="state" formControlName="state" /><br>
+
+                    @if(employeeForm.get('address')?.get('state')?.invalid && employeeForm.get('address')?.get('state')?.touched) {
+
+                        @if(employeeForm.get('address')?.get('state')?.hasError('required')){
+                            <span class="validation-error">State is required</span><br>
+                        }
+                    }
+                </div>
+
+                <label for="role">Role</label><br>
+                <select name="role" formControlName="role">
+                    @for(role of roles; track $index){
+                        <option [value]="role.id">{{role.value}}</option>
+                    }
+                </select><br>
+
+                <br>
+                <button type="submit" [disabled]="employeeForm.invalid">Submit</button><br>
+            </form>
+        </div>
+        <button type="button" (click)="populate()">Populate</button>
+        <button type="button" (click)="trySubject()">Subject</button>
+        <button type="button" (click)="tryBehaviourSubject()">BehaviourSubject</button>
+        <button type="button" (click)="tryRxjsForkJoin([1,2,3], [4,5,6])">Forkjoin</button>
+        <button type="button" (click)="tryRxjsFilter()">Rxjs Filter</button>
+        <button type="button" (click)="tryRxjsMap([1,2,3,4,5])">Rxjs Map</button>
+
+        <div (click)="divClick()">
+            <button (click)="btnClick()">Even Bubbling</button>
+        </div>
+
+
+
+
+        <div class="inputs">
+            <h1>Name</h1>
+            <p>{{employeeForm.get('name')?.value}}</p>
+
+            <h1>Password</h1>
+            <p>{{employeeForm.get('password')?.value}}</p>
+
+            <h1>Phone Number</h1>
+            <p>{{employeeForm.get('phoneNumber')?.value}}</p>
+
+            <h1>City</h1>
+            <p>{{employeeForm.get('address')?.get('city')?.value}}</p>
+
+            <h1>State</h1>
+            <p>{{employeeForm.get('address')?.get('state')?.value}}</p>
+
+            <h1>Role</h1>
+            <p>{{employeeForm.get('role')?.value}}</p>
+
+            <h1>Submitted?</h1>
+            <p>{{isSubmitted}}</p>
+        </div>
+    </div>
+
+    <div class="links">
+        <a href="/child1" class="go-to-template">
+            Go to Template form
+        </a>
+    </div>
+</div>
