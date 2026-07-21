@@ -7,11 +7,5 @@ import { Employee } from '../models/employee';
   providedIn: 'root'
 })
 export class DemoService1Service {
-  private http = inject(HttpClient);
-  constructor() { }
-
-  getEmployees(): Observable<Employee[]>{
-    return this.http.get<Employee[]>('/api/employees');
-  }
 
 }

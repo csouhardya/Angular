@@ -11,12 +11,6 @@ export class Parent1Component {
    *
    */
 
-  router = inject(Router);
-  navigateToTemplate() {
-    this.router.navigate(['child1'])
-  }
 
-  navigateToReactive() {
-    this.router.navigate(['child2'])
-  }
+
 }
