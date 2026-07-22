@@ -1,0 +1,11 @@
+1. Write template driven forms with model binding and model value display with button disable and enable
+2. Write reactive forms with model binding and model value display with button disable and enable
+3. Write http injection
+4. Write imports in app module
+5. Write routes in app routes
+6. Write Custom validations for reactive forms
+7. Write services
+8. Write rxjs for forkjoin, map
+9. try behavious subject and subject
+10. Write Pipes
+11. Value passing from parent to child, child to parent, sibling to sibling
