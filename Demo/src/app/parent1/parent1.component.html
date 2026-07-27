@@ -7,6 +7,14 @@
     <!-- Top Section (30%) -->
     <div class="top-section">
         Parent Content
+        <h1> Hello I am parent</h1>
+        <h3> Child1 sent one message</h3>
+        <p>{{child1Message}}</p>
+
+        <h3>Child 2 sent one message</h3>
+        <p>{{child2Message}}</p>
+        <button type="button" (click)="sendMessageToChild1()">Notification to child1</button>
+        <button type="button" (click)="sendMessageToChild2()">Notification to child2</button>
 
     </div>
 
@@ -14,11 +22,11 @@
     <div class="bottom-section">
 
         <div class="child-left">
-           
+           <app-child1 [message]="messageToChild1 ? messageToChild1 : null" (notificationEmitter)="receiveDataFromChild1($event)"></app-child1>
         </div>
 
         <div class="child-right">
-           
+           <app-child2 [message]="messageToChild2" (notificationEmitter)="receiveDataFromChild2($event)"></app-child2>
         </div>
 
     </div>
